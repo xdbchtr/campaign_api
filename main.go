@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bwastartup/auth"
 	"bwastartup/handler"
 	"bwastartup/user"
+	"fmt"
 	"log"
 
 	"github.com/gin-gonic/gin"
@@ -19,10 +21,13 @@ func main() {
 
 	userRepository := user.NewRepository(db)
 	userService := user.NewService(userRepository)
-
 	userService.SaveAvatar(4, "images/1-profile.png")
 
-	userHandler := handler.NewUserHandler(userService)
+	authService := auth.NewService()
+
+	fmt.Println(authService.GenerateToken(1001))
+
+	userHandler := handler.NewUserHandler(userService, authService)
 
 	router := gin.Default()
 	api := router.Group("/api/v1")
