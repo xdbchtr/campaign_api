@@ -42,7 +42,7 @@ func (h *campaignHandler) GetCampaign(c *gin.Context) {
 	//handler : mapping ID yng di url ke struct => service, call formatter
 	//service : inputnya struct input => menangkap ID di url,memanggil repo
 	//repository : get Campaign by ID
-	var input campaign.GetCmpaignDetailInput
+	var input campaign.GetCampaignDetailInput
 	err := c.ShouldBindUri(&input)
 	if err != nil {
 		response := helper.APIResponse("Failed to get detail of Campaign", http.StatusBadRequest, "error", nil)
@@ -86,7 +86,7 @@ func (h *campaignHandler) CreateCampaign(c *gin.Context) {
 
 func (h *campaignHandler) UpdateCampaign(c *gin.Context) {
 
-	var inputID campaign.GetCmpaignDetailInput
+	var inputID campaign.GetCampaignDetailInput
 	err := c.ShouldBindUri(&inputID)
 	if err != nil {
 		response := helper.APIResponse("Failed to update Campaign", http.StatusBadRequest, "error", nil)

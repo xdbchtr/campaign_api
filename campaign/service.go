@@ -9,9 +9,9 @@ import (
 
 type Service interface {
 	GetCampaigns(userID int) ([]Campaign, error)
-	GetCampaignByID(input GetCmpaignDetailInput) (Campaign, error)
+	GetCampaignByID(input GetCampaignDetailInput) (Campaign, error)
 	CreateCampaign(input CreateCampaignInput) (Campaign, error)
-	UpdateCampaign(inputID GetCmpaignDetailInput, inputData CreateCampaignInput) (Campaign, error)
+	UpdateCampaign(inputID GetCampaignDetailInput, inputData CreateCampaignInput) (Campaign, error)
 	SaveCampaignImage(input CreateCampaignImageInput, fileLocation string) (CampaignImage, error)
 }
 type service struct {
@@ -36,7 +36,7 @@ func (s *service) GetCampaigns(userID int) ([]Campaign, error) {
 	return campaigns, nil
 }
 
-func (s *service) GetCampaignByID(input GetCmpaignDetailInput) (Campaign, error) {
+func (s *service) GetCampaignByID(input GetCampaignDetailInput) (Campaign, error) {
 	campaign, err := s.repository.FindByID(input.ID)
 	if err != nil {
 		return campaign, err
@@ -65,7 +65,7 @@ func (s *service) CreateCampaign(input CreateCampaignInput) (Campaign, error) {
 	}
 	return newCampaign, nil
 }
-func (s *service) UpdateCampaign(inputID GetCmpaignDetailInput, inputData CreateCampaignInput) (Campaign, error) {
+func (s *service) UpdateCampaign(inputID GetCampaignDetailInput, inputData CreateCampaignInput) (Campaign, error) {
 	campaign, err := s.repository.FindByID(inputID.ID)
 	if err != nil {
 		return campaign, err

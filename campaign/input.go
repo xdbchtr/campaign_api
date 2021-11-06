@@ -2,7 +2,7 @@ package campaign
 
 import "bwastartup/user"
 
-type GetCmpaignDetailInput struct {
+type GetCampaignDetailInput struct {
 	ID int `uri:"id" binding:"required"`
 }
 type CreateCampaignInput struct {
