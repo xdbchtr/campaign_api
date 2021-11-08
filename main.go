@@ -33,12 +33,12 @@ func main() {
 	userService.SaveAvatar(4, "images/1-profile.png")
 	campaignService := campaign.NewService(campaignRepository)
 	authService := auth.NewService()
-	paymentService := payment.NewService()
+	paymentService := payment.NewService(transcationRepository, campaignRepository)
 	transactionService := transaction.NewService(transcationRepository, campaignRepository, paymentService)
 
 	userHandler := handler.NewUserHandler(userService, authService)
 	campaignHandler := handler.NewCampaignHandler(campaignService)
-	transactionHandler := handler.NewTransactionHandler(transactionService)
+	transactionHandler := handler.NewTransactionHandler(transactionService, paymentService)
 
 	router := gin.Default()
 	router.Static("/images", "./images")
@@ -58,6 +58,7 @@ func main() {
 	api.GET("/campaigns/:id/transactions", authMiddleware(authService, userService), transactionHandler.GetCampaignTransactions)
 	api.GET("/transactions", authMiddleware(authService, userService), transactionHandler.GetUserTransactions)
 	api.POST("/transactions", authMiddleware(authService, userService), transactionHandler.CreateTransaction)
+	api.POST("/transactions/notification", authMiddleware(authService, userService), transactionHandler.GetNotification)
 
 	router.Run()
 
