@@ -20,7 +20,7 @@ import (
 )
 
 func main() {
-	dsn := "root@localhost:@KKKebunrumput97!(194.163.40.147)/campaign_api?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root@localhost:KKKebunrumput97!(194.163.40.147)/campaign_api?charset=utf8mb4&parseTime=True&loc=Local"
 	// dsn := "root@localhost:KKKebunrumput97!@tcp(194.163.40.147)/campaign_api?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
