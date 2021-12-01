@@ -20,7 +20,8 @@ import (
 )
 
 func main() {
-	dsn := "root:@tcp(127.0.0.1:3306)/bwastartup?charset=utf8mb4&parseTime=True&loc=Local"
+	// dsn := "root:@tcp(127.0.0.1:3306)/bwastartup?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:Kebunrumput97@@tcp(194.163.40.147)/campaign_api?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err.Error())
@@ -31,7 +32,6 @@ func main() {
 	transcationRepository := transaction.NewRepository(db)
 
 	userService := user.NewService(userRepository)
-	userService.SaveAvatar(4, "images/1-profile.png")
 	campaignService := campaign.NewService(campaignRepository)
 	authService := auth.NewService()
 	paymentService := payment.NewService()
