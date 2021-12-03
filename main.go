@@ -20,7 +20,7 @@ import (
 )
 
 func main() {
-	dsn := "root:Kebunrumput97!@tcp(127.0.0.1:3306)/bwastartup?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:adibdev@tcp(127.0.0.1:3306)/bwastartup?charset=utf8mb4&parseTime=True&loc=Local"
 	// dsn := "root:@tcp(xdbchtr.com)/campaign_api?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
